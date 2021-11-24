@@ -1,0 +1,64 @@
+_format_version: "1.1"
+services:
+- connect_timeout: 60000
+  host: httpbin.org
+  name: new-json-service-1-modified
+  port: 80
+  protocol: http
+  read_timeout: 60000
+  retries: 5
+  routes:
+  - https_redirect_status_code: 426
+    name: new-json-service-1
+    path_handling: v0
+    paths:
+    - /json-service-1
+    preserve_host: false
+    protocols:
+    - http
+    - https
+    regex_priority: 0
+    request_buffering: true
+    response_buffering: true
+    strip_path: true
+  write_timeout: 60000
+- connect_timeout: 60000
+  host: httpbin.org
+  name: new-json-service-2-modified
+  port: 80
+  protocol: https
+  read_timeout: 60000
+  retries: 5
+  write_timeout: 60000
+- connect_timeout: 60000
+  host: httpbin.org
+  name: new-json-service-3-modified
+  port: 80
+  protocol: http
+  read_timeout: 60000
+  retries: 5
+  routes:
+  - https_redirect_status_code: 426
+    name: new-json-service-3-route-modified
+    path_handling: v0
+    paths:
+    - /json-service-3
+    - /json-service-3-modified
+    preserve_host: false
+    protocols:
+    - http
+    - https
+    regex_priority: 0
+    request_buffering: true
+    response_buffering: true
+    strip_path: true
+  write_timeout: 60000
+
+plugins:
+  - name: rate-limiting
+    route: new-json-service-1
+    config: 
+      second: 1
+      minute: 5
+      hour: 10000
+      policy: local

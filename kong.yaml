@@ -48,7 +48,7 @@ services:
 
 plugins:
   - name: rate-limiting
-    route: service-1
+    route: route-1
     config: 
       second: 1
       minute: 5

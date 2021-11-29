@@ -2,7 +2,7 @@ _format_version: "1.1"
 services:
 - connect_timeout: 60000
   host: httpbin.org
-  name: new-service-0
+  name: service-1
   port: 80
   protocol: http
   read_timeout: 60000
@@ -24,7 +24,7 @@ services:
   write_timeout: 60000
 - connect_timeout: 60000
   host: httpbin.org
-  name: new-service-2
+  name: service-2
   port: 80
   protocol: http
   read_timeout: 60000

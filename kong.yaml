@@ -2,7 +2,7 @@ _format_version: "1.1"
 services:
 - connect_timeout: 60000
   host: httpbin.org
-  name: service-1
+  name: new-service-1
   port: 80
   protocol: http
   read_timeout: 60000
@@ -35,7 +35,6 @@ services:
     path_handling: v0
     paths:
     - /route-2
-    - /route-2-backup
     preserve_host: false
     protocols:
     - http
@@ -45,12 +44,3 @@ services:
     response_buffering: true
     strip_path: true
   write_timeout: 60000
-
-plugins:
-  - name: rate-limiting
-    route: route-1
-    config: 
-      second: 1
-      minute: 5
-      hour: 10000
-      policy: local

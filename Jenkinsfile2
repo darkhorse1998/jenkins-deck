@@ -1,7 +1,7 @@
 pipeline {
 environment {
 registry = "hkalita1998/kong-deck"
-registryCredential = 'hkalita1998'
+registryCredential = 'Dockerhub'
 dockerImage = ''
 }
 agent any

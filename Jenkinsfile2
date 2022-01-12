@@ -32,5 +32,25 @@ steps {
 sh 'docker run hkalita1998/kong-deck --kong-addr http://192.168.29.112:8001 ping'
 }
 }
+stage('Validate') {
+steps {
+sh 'docker run hkalita1998/kong-deck --kong-addr http://192.168.29.112:8001 validate'
+}
+}
+stage('Diff') {
+steps {
+sh 'docker run hkalita1998/kong-deck --kong-addr http://192.168.29.112:8001 diff'
+}
+}
+stage('Sync') {
+steps {
+sh 'docker run hkalita1998/kong-deck --kong-addr http://192.168.29.112:8001 sync'
+}
+}
+stage('Cleaning up') {
+steps{
+sh "docker rmi $registry:$BUILD_NUMBER"
+}
+}
 }
 }

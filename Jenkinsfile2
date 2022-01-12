@@ -6,11 +6,6 @@ dockerImage = ''
 }
 agent any
 stages {
-stage('Cloning our Git') {
-steps {
-git 'https://github.com/darkhorse1998/jenkins-deck.git'
-}
-}
 stage('Building our image') {
 steps{
 script {
@@ -50,6 +45,7 @@ sh 'docker run hkalita1998/kong-deck --kong-addr http://192.168.29.112:8001 sync
 stage('Cleaning up') {
 steps{
 sh "docker rmi $registry:$BUILD_NUMBER"
+sh "docker container prune --force --filter="label=maintainer=hkalita1998/kong-deck""
 }
 }
 }

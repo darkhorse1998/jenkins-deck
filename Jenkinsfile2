@@ -29,7 +29,7 @@ dockerImage.push()
 }
 stage('Ping') {
 steps {
-git 'docker run hkalita1998/kong-deck --kong-addr http://192.168.29.112:8001 ping'
+sh 'docker run hkalita1998/kong-deck --kong-addr http://192.168.29.112:8001 ping'
 }
 }
 }

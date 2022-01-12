@@ -3,7 +3,7 @@ _format_version: "1.1"
 services:
 - connect_timeout: 60000
   host: httpbin.org
-  name: new-service-1
+  name: service-1
   port: 80
   protocol: http
   read_timeout: 60000
@@ -35,7 +35,7 @@ services:
     name: new-json-service-3-route-modified
     path_handling: v0
     paths:
-    - /route-2
+    - /service-2
     preserve_host: false
     protocols:
     - http

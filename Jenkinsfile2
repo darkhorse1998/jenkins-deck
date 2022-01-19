@@ -24,8 +24,7 @@ pipeline {
 			}
 			stage('Ping') {
 				steps {
-					sh 'ping https://www.google.com'
-					sh 'docker run hkalita1998/kong-deck:$BUILD_NUMBER --kong-addr http://google.com ping'
+					sh 'docker run hkalita1998/kong-deck:$BUILD_NUMBER --kong-addr http://localhost:8001 ping'
 				}
 			}
 			stage('Validate') {

@@ -13,33 +13,24 @@ pipeline {
 					}
 				}
 			}
-			stage('Deploy our image') {
-				steps{
-					script {
-						docker.withRegistry( '', registryCredential ) {
-						dockerImage.push()
-						}
-					}
-				}
-			}
 			stage('Ping') {
 				steps {
-					sh 'docker run hkalita1998/kong-deck:$BUILD_NUMBER --kong-addr http://kong:8001 ping'
+					sh 'docker run hkalita1998/kong-deck:$BUILD_NUMBER --kong-addr http://10.102.214.89:8001 ping'
 				}
 			}
 			stage('Validate') {
 				steps {
-					sh 'docker run hkalita1998/kong-deck:$BUILD_NUMBER --kong-addr http://10.102.211.114:8001 validate'
+					sh 'docker run hkalita1998/kong-deck:$BUILD_NUMBER --kong-addr http://10.102.214.89:8001 validate'
 				}
 			}
 			stage('Diff') {
 				steps {
-					sh 'docker run hkalita1998/kong-deck:$BUILD_NUMBER --kong-addr http://10.102.211.114:8001 diff'
+					sh 'docker run hkalita1998/kong-deck:$BUILD_NUMBER --kong-addr http://10.102.214.89:8001 diff'
 				}
 			}
 			stage('Sync') {
 				steps {
-					sh 'docker run hkalita1998/kong-deck:$BUILD_NUMBER --kong-addr http://10.102.211.114:8001 sync'
+					sh 'docker run hkalita1998/kong-deck:$BUILD_NUMBER --kong-addr http://10.102.214.89:8001 sync'
 				}
 			}
 			stage('Cleaning up') {

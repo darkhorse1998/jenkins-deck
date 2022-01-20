@@ -24,7 +24,7 @@ pipeline {
 			}
 			stage('Ping') {
 				steps {
-					sh 'docker run hkalita1998/kong-deck:$BUILD_NUMBER --kong-addr http://10.102.211.114:8001 ping'
+					sh 'docker run hkalita1998/kong-deck:$BUILD_NUMBER --kong-addr http://kong:8001 ping'
 				}
 			}
 			stage('Validate') {

@@ -36,7 +36,7 @@ pipeline {
 			stage('Cleaning up') {
 				steps{
 					sh 'docker container prune --force --filter="label=maintainer=hkalita1998/kong-deck"'
-					sh 'docker image prune --force --filter="label=maintainer=hkalita1998/kong-deck"'
+					sh 'docker rmi -f $registry:$BUILD_NUMBER'
 				}
 			}
 }

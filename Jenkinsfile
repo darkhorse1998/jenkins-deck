@@ -25,7 +25,7 @@ pipeline {
 			}
 			stage('Diff') {
 				steps {
-					sh 'docker run hkalita1998/kong-deck:$BUILD_NUMBER --kong-addr http://10.102.221.114.221:8001 diff'
+					sh 'docker run hkalita1998/kong-deck:$BUILD_NUMBER --kong-addr http://10.102.221.114:8001 diff'
 				}
 			}
 			stage('Sync') {
